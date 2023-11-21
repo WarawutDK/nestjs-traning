@@ -23,7 +23,7 @@ export class UserEntity {
   @Column()
   email: string;
 
-  @Column()
+  @Column({select : false})
   password: string;
 
   @ManyToMany(() => TaskEntity, (taskEntity) => taskEntity.id)

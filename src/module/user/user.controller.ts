@@ -3,11 +3,14 @@ import { RegisterDTO } from './dto/register.dto';
 import { UserService } from './user.service';
 import { UserEntity } from 'src/model/Postgres/user.entity';
 import { LocalAuthGuard } from 'auth/local/local-auth.guard';
+import { ApiBearerAuth, ApiOkResponse } from '@nestjs/swagger';
 
+@ApiBearerAuth()
 @Controller('user')
 export class UserController {
 
   constructor(private readonly userService:UserService) {}
+  @ApiOkResponse({type:RegisterDTO})
   @Post('/register')
   @UsePipes(ValidationPipe)
   async registeer(@Body() body: RegisterDTO): Promise<any> {

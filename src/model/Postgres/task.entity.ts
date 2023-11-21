@@ -24,6 +24,9 @@ export class TaskEntity {
   @Column()
   description: string;
 
+  @Column({ name: 'status_id' })
+  statusid: string;
+
   @ManyToOne(() => StatusEntity, (statusEntity) => statusEntity.tasks)
   @JoinColumn({ name: 'status_id' })
   @Index()
@@ -31,7 +34,7 @@ export class TaskEntity {
 
   @ManyToMany(() => UserEntity, (userEntity) => userEntity.id)
   @JoinTable({ name: 'task_user' })
-  users: UserEntity[];
+  members: UserEntity[];
 
   @ManyToOne(() => UserEntity, (userEntity) => userEntity.createTasks)
   @JoinColumn({ name: 'create_by' })

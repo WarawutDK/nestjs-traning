@@ -6,9 +6,17 @@ import { UserModule } from './module/user/user.module';
 import { AuthModule } from 'auth/auth.module';
 import { StatusModule } from './module/status/status.module';
 import { TaskModule } from './module/task/task.module';
+import { MongodbProviderModule } from './Provider/database/mongodb/provider.module';
 
 @Module({
-  imports: [PostgresProviderModule,UserModule,AuthModule,StatusModule, TaskModule],
+  imports: [
+    PostgresProviderModule,
+    MongodbProviderModule,
+    UserModule,
+    AuthModule,
+    StatusModule,
+    TaskModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
